@@ -106,5 +106,14 @@ foreach ($files as $filename) {
         $r['user_functions'] = array_merge($r['user_functions'], $r0['user_functions']);
     }
 }
+$files_lib = scandir($dirname.'/lib');
+foreach ($files_lib as $filename) {
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+    if (strtolower($ext) == 'php') {
+        $r0 = parse_file($dirname.'/lib/'.$filename);
+        $r['user_vars'] = array_merge($r['user_vars'], $r0['user_vars']);
+        $r['user_functions'] = array_merge($r['user_functions'], $r0['user_functions']);
+    }
+}
 
 echo json_encode($r);
