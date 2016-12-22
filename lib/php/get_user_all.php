@@ -106,7 +106,6 @@ foreach ($files as $filename) {
         $r['user_functions'] = array_merge($r['user_functions'], $r0['user_functions']);
     }
 }
-
 $lib_dir = $dirname.'/lib';
 if(file_exists($lib_dir) && is_dir($lib_dir))
 {
@@ -114,7 +113,7 @@ if(file_exists($lib_dir) && is_dir($lib_dir))
 	foreach ($files_lib as $filename) {
         $ext = pathinfo($filename, PATHINFO_EXTENSION);
         if (strtolower($ext) == 'php') {
-            $r0 = parse_file($dirname.'/lib/'.$filename);
+            $r0 = parse_file($lib_dir.'/'.$filename);
             $r['user_vars'] = array_merge($r['user_vars'], $r0['user_vars']);
             $r['user_functions'] = array_merge($r['user_functions'], $r0['user_functions']);
         }
